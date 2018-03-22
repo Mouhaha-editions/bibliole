@@ -1,0 +1,23 @@
+dal_admin_categorie:
+    resource: "@DalBundle/Resources/config/routing/categorie.yml"
+    prefix:   /admin/categorie
+
+dal_admin_livre:
+    resource: "@DalBundle/Resources/config/routing/livre.yml"
+    prefix:   /admin/livre
+
+dal_admin_keyword:
+    resource: "@DalBundle/Resources/config/routing/keyword.yml"
+    prefix:   /admin/keyword
+
+dal_admin_auteur:
+    resource: "@DalBundle/Resources/config/routing/auteur.yml"
+    prefix:   /admin/auteur
+
+dal_admin_classe:
+    resource: "@DalBundle/Resources/config/routing/classe.yml"
+    prefix:   /admin/classe
+
+dal_admin_utilisateur:
+    resource: "@DalBundle/Resources/config/routing/utilisateur.yml"
+    prefix:   /admin/utilisateur

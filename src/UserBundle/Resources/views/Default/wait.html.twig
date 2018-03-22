@@ -1,0 +1,143 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card clearfix">
+                <div class="header">
+                    <h2>
+                        Import d'utilisateurs
+                    </h2>
+                </div>
+                <div class="body">
+                    <h3 id="progression"><span id="count">0</span> / {{ app.request.get("total") }}</h3>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="20"
+                             aria-valuemin="0" aria-valuemax="100" style="">
+                            <span class="sr-only">0%</span>
+                        </div>
+                    </div>
+                    <a href="{{ path('admin_import_new') }}" class="btn btn-danger">Arreter et quitter</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card clearfix">
+                <div class="header">
+                    <h2>Console Import <span class="label label-default" id="count_console">0</span>
+                    </h2>
+                </div>
+                <div class="body">
+
+                    <div class="col-md-12">
+                        <span class="text-success"><input type="checkbox" checked="checked" name="success" id="success"
+                                                          class="filter"/> <label for="success">succès</label></span> |
+                        <span class="text-warning"><input type="checkbox" checked="checked"
+                                                          name="warning" id="warning"
+                                                          class="filter"/> <label
+                                    for="warning">warning</label></span> |
+                        <span class="text-danger"><input type="checkbox" checked="checked" name="danger"
+                                                         id="danger"
+                                                         class="filter"/> <label
+                                    for="danger">danger</label> </span>
+                    </div>
+
+                    <div class="col-md-12" style="height:500px;overflow: auto; ">
+                        <ul id="console"></ul>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(function () {
+            callAjax(0);
+            $(".filter").on("change", function () {
+                if ($(this).is(":checked")) {
+                    $("ul li.text-" + $(this).attr("name")).show();
+                } else {
+                    $("ul li.text-" + $(this).attr("name")).hide();
+                }
+            });
+        });
+
+        function callAjax(mapage) {
+            var progressbar = $(".progress-bar-striped");
+            var console = $("#console");
+            var count_console = $("#count_console");
+            var filter_success = $(".filter[name='success']");
+            var filter_warning = $(".filter[name='warning']");
+            var filter_danger = $(".filter[name='danger']");
+            var percent = 0;
+            $.ajax({
+                url: "{{ url("admin_import_ajax") }}",
+                data: {
+                    page: mapage,
+                    import: "{{ import }}",
+                    force: {{ app.request.get("force",0) }},
+                },
+                dataType: "json",
+                success: function (data) {
+                    var count = $("#count");
+                    if (data.response === true) {
+                        count.text(data.line);
+                        callAjax(mapage + 1);
+                        percent = ((data.line) /{{ app.request.get("total") }}) * 100;
+                        progressbar.attr("aria-valuenow", percent);
+                        progressbar.css("width", percent + "%");
+
+                    } else {
+                        progressbar.text("Terminé");
+                        percent = 100;
+                        count.text(data.line);
+                        progressbar.attr("aria-valuenow", percent);
+                        progressbar.css("width", percent + "%");
+                    }
+                    for (var i = 0; i < data.success.length; i++) {
+                        console.prepend("<li class=\"text-success\">" + data.success[i] + "</li>");
+                        count_console.text(parseInt(count_console.text()) + 1);
+
+                    }
+                    for (var i = 0; i < data.warning.length; i++) {
+                        console.prepend("<li class=\"text-warning\">" + data.warning[i] + "</li>");
+                        count_console.text(parseInt(count_console.text()) + 1);
+
+                    }
+                    for (var i = 0; i < data.error.length; i++) {
+                        console.prepend("<li class=\"text-danger\">" + data.error[i] + "</li>");
+                        count_console.text(parseInt(count_console.text()) + 1);
+
+                    }
+
+                    if (filter_success.is(":checked")) {
+                        $("ul li.text-success").show();
+                    } else {
+                        $("ul li.text-success").hide();
+                    }
+                    if (filter_warning.is(":checked")) {
+                        $("ul li.text-warning").show();
+                    } else {
+                        $("ul li.text-warning").hide();
+                    }
+                    if (filter_danger.is(":checked")) {
+                        $("ul li.text-danger").show();
+                    } else {
+                        $("ul li.text-danger").hide();
+                    }
+                }//,
+                {#error: function () {#}
+                {#window.location.href = "{{ url("admin_import_new") }}";#}
+                {#}#}
+            });
+        }
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+admin_categorie_index:
+    path:     /
+    defaults: { _controller: "DalBundle:Categorie:index" }
+    methods:  GET
+
+admin_categorie_show:
+    path:     /{id}/show
+    defaults: { _controller: "DalBundle:Categorie:show" }
+    methods:  GET
+
+admin_categorie_new:
+    path:     /new
+    defaults: { _controller: "DalBundle:Categorie:new" }
+    methods:  [GET, POST]
+
+admin_categorie_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DalBundle:Categorie:edit" }
+    methods:  [GET, POST]
+
+admin_categorie_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DalBundle:Categorie:delete" }
+    methods:  DELETE

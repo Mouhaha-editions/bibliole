@@ -1,0 +1,22 @@
+{
+  "name": "cdi",
+  "authors": [
+    "pierrick pobelle <pierrick.pobelle@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "adminbsb-materialdesign": "^1.0.5",
+    "select2": "~4.0"
+  }
+}

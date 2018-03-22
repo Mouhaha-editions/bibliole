@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+{% import "@Pagination/Pagination/partial.html.twig" as macro_pagination %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card clearfix">
+                <div class="header">
+                    <h2>
+                        Emprunts
+                    </h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                {#<li><a href="{{ url('admin_utilisateur_new') }}"#}
+                                {#class=" waves-effect waves-block">Ajouter</a></li>#}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ form_start(form) }}
+                            {{ form_widget(form.utilisateur) }}
+                            emprunte {{ form_widget(form.livre) }} {{ form_widget(form.ok) }}
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="header">
+                    <h2>
+                        Emprunts en cours
+                    </h2>
+                </div>
+                <div class="body">
+                    <form class="form-inline">
+                        <input class="form-control" placeholder="Nom, prénom, classe, titre du livre" value="{{ app.request.get('search') }}" name="search"/> <button type="submit" class="btn btn-info">Go !</button>
+                        {% if  app.request.get('search')  is not empty %}<a href="{{ url("admin_emprunt_index") }}" class="btn btn-default">Effacer</a>{% endif %}
+                    </form>
+                    {% if pagination.entities|length > 0 %}
+
+                        <table class="table">
+                            <tr>
+                                <th>Emprunteur</th>
+                                <th>Livre</th>
+                                <th>Date d'emprunt</th>
+                                <th>Date de retour prévu</th>
+                                <th>Retour</th>
+                            </tr>
+                            {% for emprunt in pagination.entities %}
+                                <tr>
+                                    {#<td>{{ dump(emprunt.utilisateur.nom) }}</td>#}
+                                    <td>{{ emprunt.utilisateur.prenom }} {{ emprunt.utilisateur.nom }} - {{ emprunt.utilisateur.classe is not null ? emprunt.utilisateur.classe.libelle : 'N.C.' }}</td>
+                                    <td>{{ emprunt.livre }}</td>
+                                    <td>{{ emprunt.dateDebutStr }}</td>
+                                    <td>{{ emprunt.dateFinPrevueStr }}</td>
+                                    <td><a href="{{ url('admin_emprunt__retour',{id:emprunt.id}) }}" class="btn btn-xs btn-success">ok</a></td>
+                                </tr>
+                            {% endfor %}
+
+                        </table>
+                        {{  macro_pagination.paginate(pagination) }}
+                    {% else %}
+                        <p> Aucun emprunt pour le moment</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

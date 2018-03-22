@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block card %}
+    <h1>Création d'un utilisateur</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit"  class="btn btn-info" value="Créer" />
+    {{ form_end(form) }}
+{% endblock %}

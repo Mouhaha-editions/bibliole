@@ -1,0 +1,29 @@
+keyword_index:
+    path:     /
+    defaults: { _controller: "DalBundle:Keyword:index" }
+    methods:  GET
+
+keyword_show:
+    path:     /{id}/show
+    defaults: { _controller: "DalBundle:Keyword:show" }
+    methods:  GET
+
+keyword_new:
+    path:     /new
+    defaults: { _controller: "DalBundle:Keyword:new" }
+    methods:  [GET, POST]
+
+keyword_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DalBundle:Keyword:edit" }
+    methods:  [GET, POST]
+
+keyword_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DalBundle:Keyword:delete" }
+    methods:  DELETE
+
+keyword_resource:
+    path:     /autocomplete
+    defaults: { _controller: "DalBundle:Keyword:autocomplete" }
+    methods:  [GET, POST]

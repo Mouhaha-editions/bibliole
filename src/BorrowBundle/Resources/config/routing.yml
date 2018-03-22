@@ -1,0 +1,7 @@
+admin_emprunt_index:
+    path:     /admin/emprunt/
+    defaults: { _controller: BorrowBundle:Default:index }
+
+admin_emprunt__retour:
+    path:     /admin/emprunt/retour/{id}
+    defaults: { _controller: BorrowBundle:Default:retour }

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block card %}
+    <h1>Classes list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for classe in classes %}
+            <tr>
+                <td><a href="{{ path('admin_classe_show', { 'id': classe.id }) }}">{{ classe.id }}</a></td>
+                <td>{{ classe.libelle }}</td>
+            <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_classe_show', { 'id': classe.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_classe_edit', { 'id': classe.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_classe_new') }}">Create a new classe</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% import '@Pagination/Pagination/partial.html.twig' as macro_pagination %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card clearfix">
+                <div class="header">
+                    <h2>
+                        Les livres
+                    </h2>
+                    <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="material-icons">more_vert</i>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                    <li><a href="{{ url('admin_livre_new') }}" class=" waves-effect waves-block">Ajouter</a></li>
+                    </ul>
+                    </li>
+                    </ul>
+                </div>
+                <div class="body clearfix">
+
+                    <form class="form-inline">
+                        <input class="form-control" placeholder="Titre, mot clé, numéro, auteur  " value="{{ app.request.get('search') }}" name="search"/> <button type="submit" class="btn btn-info">Go !</button>
+                    </form>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            {#<th>Id</th>#}
+                            <th>Numéro</th>
+                            <th>Tranche</th>
+                            <th>Titre</th>
+                            <th>Auteur</th>
+                            <th>Categorie</th>
+                            <th>Mots clé</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for livre in pagination.entities %}
+                            <tr>
+                                {#<td>{{ livre.id }}</td>#}
+                                <td>{{ livre.numero }}</td>
+                                <td>{{ livre.tranche }}</td>
+                                <td>{{ livre.titre }}</td>
+                                <td>{{ livre.auteur is not null ? livre.auteur.__toAutocomplete:"ERREUR ! " }}</td>
+                                <td>{{ livre.categorie.libelle }}</td>
+                                <td>{{ livre.keywords|join(', ') }}</td>
+                                <td>
+                                    <a href="{{ path('admin_livre_edit', { 'id': livre.id }) }}" class="btn btn-sm btn-primary">modifier</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    page :
+                    {{ macro_pagination.paginate(pagination)  }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

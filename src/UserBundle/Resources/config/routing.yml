@@ -1,0 +1,12 @@
+admin_import_new:
+    path:     admin/import/new
+    defaults: { _controller: "UserBundle:Import:new" }
+    methods:  [GET, POST]
+admin_import_wait:
+    path:     admin/import/wait
+    defaults: { _controller: "UserBundle:Import:wait" }
+    methods:  [GET, POST]
+admin_import_ajax:
+    path:     admin/import/ajax
+    defaults: { _controller: "UserBundle:Import:ajax" }
+    methods:  [GET, POST]

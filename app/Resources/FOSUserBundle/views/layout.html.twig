@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Sign In | Bootstrap Based Admin Template - Material Design</title>
+    <!-- Favicon-->
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="{{ asset('vendor/adminbsb-materialdesign/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="{{ asset('vendor/adminbsb-materialdesign/plugins/node-waves/waves.min.css') }}" rel="stylesheet">
+
+    <!-- Animation Css -->
+    <link href="{{ asset('vendor/adminbsb-materialdesign/plugins/animate-css/animate.min.css') }}" rel="stylesheet">
+
+    <!-- Custom Css -->
+    <link href="{{ asset("vendor/adminbsb-materialdesign/css/style.min.css") }}" rel="stylesheet">
+</head>
+<body class="login-page ls-closed">
+<div class="login-box">
+    <div class="logo">
+        <a href="{{ url('dashboard') }}">Bibliole</a>
+        <small>Une application pour les bouquins</small>
+    </div>
+    <div class="card">
+        <div class="body">
+
+
+            {% if app.request.hasPreviousSession %}
+                {% for type, messages in app.session.flashbag.all() %}
+                    {% for message in messages %}
+                        <div class="flash-{{ type }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+
+            <div>
+                {% block fos_user_content %}
+                {% endblock fos_user_content %}
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Jquery Core Js -->
+<script src="{{ asset("vendor/adminbsb-materialdesign/plugins/jquery/jquery.min.js") }}"></script>
+
+<!-- Bootstrap Core Js -->
+<script src="{{ asset("vendor/adminbsb-materialdesign/plugins/bootstrap/js/bootstrap.min.js") }}"></script>
+
+<!-- Waves Effect Plugin Js -->
+<script src="{{ asset("vendor/adminbsb-materialdesign/plugins/node-waves/waves.min.js") }}"></script>
+
+<!-- Validation Plugin Js -->
+<script src="{{ asset("vendor/adminbsb-materialdesign/plugins/jquery-validation/jquery.validate.js") }}"></script>
+
+<!-- Custom Js -->
+<script src="{{ asset("vendor/adminbsb-materialdesign/js/admin.js")}}"></script>
+<script src="{{ asset("vendor/adminbsb-materialdesign/js/pages/examples/sign-in.js")}}"></script>
+</body>
+</html>

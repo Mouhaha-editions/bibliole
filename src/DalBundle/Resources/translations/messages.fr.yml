@@ -1,0 +1,22 @@
+livre:
+    label:
+        numero: Numéro unique
+        titre: Titre
+        resume: Résumé
+        auteur: Auteur
+        categorie: Catégorie
+        keywords: Mots clés
+        numeroTome: Numero de Tome
+        isbn: ISBN
+    placeholder:
+        numero: Automatique, mais vous pouvez le forcer en entrant une nouvelle valeur
+        titre: Titre du livre
+        resume: Résumé (facultatif)
+        auteur: Entrez les premières lettres du nom
+        categorie: Choisir une catégorie
+        keywords: mots clé séparés par des espaces
+        numeroTome: Numero de Tome
+        isbn: ISBN
+Button:
+    save goto new: Enregistrer & Nouveau
+    save goto list: Enregistrer & Liste

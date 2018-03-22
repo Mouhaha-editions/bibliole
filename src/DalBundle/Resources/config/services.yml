@@ -1,0 +1,8 @@
+#    dal.example:
+#        class: DalBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+services:
+    dal.form.registration:
+        class: DalBundle\Form\UtilisateurType
+        tags:
+            - { name: form.type, alias: dal_user_registration }

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html ng-app="adminbsb">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>{% block title %} Bibliole {% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link href="{{ asset('vendor/adminbsb-materialdesign/plugins/bootstrap/css/bootstrap.min.css') }}"
+          rel="stylesheet"/>
+    <link href="{{ asset('vendor/adminbsb-materialdesign/plugins/node-waves/waves.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset("vendor/adminbsb-materialdesign/css/style.min.css") }}" rel="stylesheet"/>
+    <link href="{{ asset("vendor/adminbsb-materialdesign/css/themes/all-themes.min.css") }}" rel="stylesheet"/>
+    {#<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />#}
+
+    {#<link href="{{ asset("vendor/select2/dist/css/select2.min.css") }}" rel="stylesheet"/>#}
+    {#<link href="{{ asset("vendor/select2/dist/css/select2-bootstrap.min.css") }}" rel="stylesheet"/>#}
+    <link href="{{ asset("bundles/book/css/custom.css") }}" rel="stylesheet"/>
+    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
+    <link href="{{ asset("vendor/select2/dist/css/select2.min.css") }}" rel="stylesheet"/>
+
+
+    {% block stylesheets %}{% endblock %}
+    {% if form is  defined %}
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {% endif %}
+</head>
+<body class="theme-blue">
+{% block body %}
+    {#<div class="page-loader-wrapper">#}
+    {#<div class="loader">#}
+    {#<div class="preloader">#}
+    {#<div class="spinner-layer pl-red">#}
+    {#<div class="circle-clipper left">#}
+    {#<div class="circle"></div>#}
+    {#</div>#}
+    {#<div class="circle-clipper right">#}
+    {#<div class="circle"></div>#}
+    {#</div>#}
+    {#</div>#}
+    {#</div>#}
+    {#<p>Please wait...</p>#}
+    {#</div>#}
+    {#</div>#}
+    {#<div class="overlay"></div>#}
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    {#<div class="search-bar">#}
+    {#<div class="search-icon">#}
+    {#<i class="material-icons">search</i>#}
+    {#</div>#}
+    {#<input type="text" placeholder="START TYPING...">#}
+    {#<div class="close-search">#}
+    {#<i class="material-icons">close</i>#}
+    {#</div>#}
+    {#</div>#}
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+                   data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="/">Bibliole</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="image">
+                    {#<img src="../../images/user.png" width="48" height="48" alt="User" />#}
+                </div>
+                <div class="info-container">
+                    {% if is_granted("ROLE_USER") %}
+                        <div class="name" data-toggle="dropdown" aria-haspopup="true"
+                             aria-expanded="false">{{ app.user.username }}</div>
+                        <div class="email">{{ app.user.email }}</div>
+
+                        <div class="btn-group user-helper-dropdown">
+                            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="{{ url('fos_user_security_logout') }}"><i class="material-icons">exit_to_app</i>
+                                        J'ai fini</a></li>
+                                {#<li role="seperator" class="divider"></li>#}
+                                {#<li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>#}
+                                {#<li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>#}
+                                {#<li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>#}
+                                {#<li role="seperator" class="divider"></li>#}
+                                {#<li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>#}
+                            </ul>
+                        </div>
+                    {% else %}
+                        <a href="{{ url("fos_user_security_login") }}" class="btn btn-default">Me connecter</a>
+                    {% endif %}
+                </div>
+            </div>
+            <!-- #User Info -->
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">Menu principal</li>
+                    <li class="{% if app.request.get('_route') starts with "dashboard" %}active{% endif %}">
+                        <a href="{{ url('dashboard') }}" class="toggled waves-effect waves-block">
+                            <i class="material-icons">dashboard</i>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="{% if app.request.get('_route') starts with "admin_livre" %}active{% endif %}">
+                            <a href="{{ url('admin_livre_index') }}" class="toggled waves-effect waves-block">
+                                <i class="material-icons">book</i>
+                                <span>Livres</span>
+                            </a>
+                        </li>
+                        <li class="{% if app.request.get('_route') starts with "admin_auteur" %}active{% endif %}">
+                            <a href="{{ url('admin_auteur_index') }}">
+                                <i class="material-icons">face</i>
+                                <span>Auteurs</span>
+                            </a>
+                        </li>
+                        <li class="{% if app.request.get('_route') starts with "admin_emprunt" %}active{% endif %}">
+                            <a href="{{ url('admin_emprunt_index') }}">
+                                <i class="material-icons">pets</i>
+                                <span>Emprunt</span>
+                            </a>
+                        </li>
+
+                        <li class="{% if app.request.get('_route') starts with "admin_utilisateur" %}active{% endif %}">
+                            <a href="{{ url('admin_utilisateur_index') }}">
+                                <i class="material-icons">account_box</i>
+                                <span>Utilisateurs</span>
+                            </a>
+                        </li>
+                        <li class="{% if app.request.get('_route') starts with "admin_import" %}active{% endif %}">
+                            <a href="{{ url('admin_import_new') }}">
+                                <i class="material-icons">account_box</i>
+                                <span>Import</span>
+                            </a>
+                        </li>
+                        <li class="{% if app.request.get('_route') starts with "admin_classe" %}active{% endif %} ">
+                            <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                                <i class="material-icons">build</i>
+                                <span>Paramètres (soon)</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li class="{% if app.request.get('_route') starts with "admin_classe" %}active{% endif %} ">
+                                    <a href="{{ url('admin_classe_index') }}" class="waves-effect waves-block">Classes</a>
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+                    {% endif %}
+                </ul>
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    &copy; 2017 - 2018 <a href="https://www.facebook.com/MouahaEditions/" target="_blank">Mouhaha
+                        Editions</a>.
+                </div>
+                <div class="version">
+                    <b>Version: </b> 1.0.3
+                </div>
+            </div>
+        </aside>
+
+    </section>
+
+
+    <section class="content">
+        <div class="container-fluid">
+            {% block content %}
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="card clearfix">
+                            <div class="header">
+                                {% block card %}
+
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    </section>
+
+{% endblock %}
+{#<script src="{{ asset('bundles/vendor/adminbsb-materialdesign/documentation/js/angular.min.js') }}"></script>#}
+{#<script src="{{ asset('bundles/vendor/adminbsb-materialdesign/documentation/js/angular-route.min.js') }}"></script>#}
+<script src="{{ asset('vendor/adminbsb-materialdesign/plugins/jquery/jquery.min.js') }}"></script>
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>#}
+
+<script src="{{ asset('vendor/adminbsb-materialdesign/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendor/adminbsb-materialdesign/plugins/node-waves/waves.min.js') }}"></script>
+<script src="{{ asset('vendor/adminbsb-materialdesign/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
+{#<script src="{{ asset("vendor/select2/dist/js/select2.full.min.js") }}"></script>#}
+<script src="{{ asset('bundles/lifotypeahead/js/bootstrap-typeahead.js') }}"></script>
+<script src="{{ asset('bundles/lifotypeahead/js/typeaheadbundle.js') }}"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<script src="{{ asset('vendor/select2/dist/js/select2.full.min.js') }}"></script>
+<script src="{{ asset('vendor/adminbsb-materialdesign/js/admin.js') }}"></script>
+{#<script src="{{ asset('bundles/tetranzselect2entity/js/select2entity.js') }}"></script>#}
+<script>
+    $(function () {
+        $('.datatable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
+            }
+        });
+//        $(document).find("select.taggable").select2({
+//            tags: true
+//        })
+
+//        setTimeout(function () {
+//            $('.page-loader-wrapper').fadeOut();
+//        }, 10);
+
+    })
+</script>
+{% block javascripts %}
+{% endblock %}
+</body>
+</html>

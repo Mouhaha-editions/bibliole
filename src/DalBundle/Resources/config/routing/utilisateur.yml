@@ -1,0 +1,28 @@
+admin_utilisateur_index:
+    path:     /
+    defaults: { _controller: "DalBundle:Utilisateur:index" }
+    methods:  GET
+
+admin_utilisateur_show:
+    path:     /{id}/show
+    defaults: { _controller: "DalBundle:Utilisateur:show" }
+    methods:  GET
+
+admin_utilisateur_new:
+    path:     /new
+    defaults: { _controller: "DalBundle:Utilisateur:new" }
+    methods:  [GET, POST]
+
+admin_utilisateur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DalBundle:Utilisateur:edit" }
+    methods:  [GET, POST]
+
+admin_utilisateur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DalBundle:Utilisateur:delete" }
+    methods:  DELETE
+
+user_resource:
+    path:     /ajax/
+    defaults: { _controller: "DalBundle:Utilisateur:ajax" }

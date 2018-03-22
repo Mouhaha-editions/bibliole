@@ -1,0 +1,24 @@
+admin_classe_index:
+    path:     /
+    defaults: { _controller: "DalBundle:Classe:index" }
+    methods:  GET
+
+admin_classe_show:
+    path:     /{id}/show
+    defaults: { _controller: "DalBundle:Classe:show" }
+    methods:  GET
+
+admin_classe_new:
+    path:     /new
+    defaults: { _controller: "DalBundle:Classe:new" }
+    methods:  [GET, POST]
+
+admin_classe_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DalBundle:Classe:edit" }
+    methods:  [GET, POST]
+
+admin_classe_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DalBundle:Classe:delete" }
+    methods:  DELETE
