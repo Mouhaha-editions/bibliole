@@ -24,13 +24,13 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Pkshetlie\PaginationBundle\PaginationBundle(),
+            new Pkshetlie\SettingsBundle\SettingsBundle(),
 
             //custom
             new BookBundle\BookBundle(),
             new DalBundle\DalBundle(),
             new UserBundle\UserBundle(),
             new BorrowBundle\BorrowBundle(),
-            new ParametreBundle\ParametreBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
