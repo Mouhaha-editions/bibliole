@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Emprunt
  *
- * @ORM\Table(name="UploadDocument")
+ * @ORM\Table(name="upload_document")
  * @ORM\Entity(repositoryClass="DalBundle\Repository\UploadDocumentRepository")
  */
 class UploadDocument

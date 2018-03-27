@@ -23,14 +23,14 @@ class AppKernel extends Kernel
             new Tetranz\Select2EntityBundle\TetranzSelect2EntityBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new PaginationBundle\PaginationBundle(),
-
+            new Pkshetlie\PaginationBundle\PaginationBundle(),
 
             //custom
             new BookBundle\BookBundle(),
             new DalBundle\DalBundle(),
             new UserBundle\UserBundle(),
             new BorrowBundle\BorrowBundle(),
+            new ParametreBundle\ParametreBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

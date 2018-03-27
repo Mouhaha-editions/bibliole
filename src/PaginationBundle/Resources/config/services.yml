@@ -1,4 +1,0 @@
-services:
-    pagination.core:
-        class: PaginationBundle\Service\Calcul
-        arguments: ["@doctrine.orm.entity_manager"]

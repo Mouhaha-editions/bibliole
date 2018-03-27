@@ -48,7 +48,7 @@ class UtilisateurController extends Controller
             }
         }
         $qb->orderBy('u.nom', 'ASC');
-        $pagination = $this->get('pagination.core')->setDefaults(50)->process($qb, $request);
+        $pagination = $this->get('pkshetlie.pagination')->setDefaults(50)->process($qb, $request);
 
         return $this->render('utilisateur/index.html.twig', array(
             'pagination' => $pagination,

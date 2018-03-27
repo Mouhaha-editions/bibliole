@@ -50,7 +50,7 @@ class LivreController extends Controller
             $qb->orderBy('s.numero', 'ASC');
         }
 
-        $pagination = $this->get('pagination.core')->setDefaults(50)->process($qb, $request);
+        $pagination = $this->get('pkshetlie.pagination')->setDefaults(50)->process($qb, $request);
         return $this->render('livre/index.html.twig', array(
             'pagination' => $pagination,
         ));

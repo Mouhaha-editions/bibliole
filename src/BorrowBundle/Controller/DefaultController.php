@@ -57,7 +57,7 @@ class DefaultController extends Controller
         }
 
 
-        $pagination = $this->get('pagination.core')->process($qb, $request);
+        $pagination = $this->get('pkshetlie.pagination')->process($qb, $request);
 
         return $this->render('BorrowBundle:Default:index.html.twig', [
             'form' => $form->createView(),
