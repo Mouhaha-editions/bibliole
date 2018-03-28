@@ -1,0 +1,3 @@
+setting_homepage:
+    path:     /
+    defaults: { _controller: SettingBundle:Default:index }

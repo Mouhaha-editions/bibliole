@@ -1,3 +1,7 @@
+setting:
+    resource: "@SettingBundle/Resources/config/routing.yml"
+    prefix:   /
+
 borrow:
     resource: "@BorrowBundle/Resources/config/routing.yml"
     prefix:   /

@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfd8d4e80604986d0bf83d6577c198e7",
+    "content-hash": "367abe7ad971973075ac6d5c6d67960b",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.52.33",
+            "version": "3.52.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "d8e6d52af2517360c2146ed6c0d43156284a4b84"
+                "reference": "c414752f2f88a036958438a3d973475c6786a387"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d8e6d52af2517360c2146ed6c0d43156284a4b84",
-                "reference": "d8e6d52af2517360c2146ed6c0d43156284a4b84",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c414752f2f88a036958438a3d973475c6786a387",
+                "reference": "c414752f2f88a036958438a3d973475c6786a387",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-03-26T21:49:03+00:00"
+            "time": "2018-03-27T19:13:06+00:00"
         },
         {
             "name": "behat/transliterator",
@@ -693,39 +693,39 @@
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
-            "version": "1.3.2",
+            "version": "1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineCacheBundle.git",
-                "reference": "9baecbd6bfdd1123b0cf8c1b88fee0170a84ddd1"
+                "reference": "4c8e363f96427924e7e519c5b5119b4f54512697"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/9baecbd6bfdd1123b0cf8c1b88fee0170a84ddd1",
-                "reference": "9baecbd6bfdd1123b0cf8c1b88fee0170a84ddd1",
+                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/4c8e363f96427924e7e519c5b5119b4f54512697",
+                "reference": "4c8e363f96427924e7e519c5b5119b4f54512697",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "^1.4.2",
                 "doctrine/inflector": "~1.0",
                 "php": ">=5.3.2",
-                "symfony/doctrine-bridge": "~2.2|~3.0|~4.0"
+                "symfony/doctrine-bridge": "~2.7|~3.3|~4.0"
             },
             "require-dev": {
                 "instaclick/coding-standard": "~1.1",
                 "instaclick/object-calisthenics-sniffs": "dev-master",
                 "instaclick/symfony2-coding-standard": "dev-remaster",
-                "phpunit/phpunit": "~4",
+                "phpunit/phpunit": "~4|~5",
                 "predis/predis": "~0.8",
                 "satooshi/php-coveralls": "^1.0",
                 "squizlabs/php_codesniffer": "~1.5",
-                "symfony/console": "~2.2|~3.0|~4.0",
-                "symfony/finder": "~2.2|~3.0|~4.0",
-                "symfony/framework-bundle": "~2.2|~3.0|~4.0",
-                "symfony/phpunit-bridge": "~2.7|~3.0|~4.0",
-                "symfony/security-acl": "~2.3|~3.0",
-                "symfony/validator": "~2.2|~3.0|~4.0",
-                "symfony/yaml": "~2.2|~3.0|~4.0"
+                "symfony/console": "~2.7|~3.3|~4.0",
+                "symfony/finder": "~2.7|~3.3|~4.0",
+                "symfony/framework-bundle": "~2.7|~3.3|~4.0",
+                "symfony/phpunit-bridge": "~2.7|~3.3|~4.0",
+                "symfony/security-acl": "~2.7|~3.3",
+                "symfony/validator": "~2.7|~3.3|~4.0",
+                "symfony/yaml": "~2.7|~3.3|~4.0"
             },
             "suggest": {
                 "symfony/security-acl": "For using this bundle to cache ACLs"
@@ -777,7 +777,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2017-10-12T17:23:29+00:00"
+            "time": "2018-03-27T09:22:12+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1907,16 +1907,16 @@
         },
         {
             "name": "pkshetlie/pagination-bundle",
-            "version": "1.0.7",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pkshetlie/pagination-bundle.git",
-                "reference": "53aed977ed6081f38c15f3fc1849d1e2c45bc169"
+                "reference": "bdd2c3ffb3f48a21d43dda7b67025073b88f9f62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pkshetlie/pagination-bundle/zipball/53aed977ed6081f38c15f3fc1849d1e2c45bc169",
-                "reference": "53aed977ed6081f38c15f3fc1849d1e2c45bc169",
+                "url": "https://api.github.com/repos/pkshetlie/pagination-bundle/zipball/bdd2c3ffb3f48a21d43dda7b67025073b88f9f62",
+                "reference": "bdd2c3ffb3f48a21d43dda7b67025073b88f9f62",
                 "shasum": ""
             },
             "require": {
@@ -1956,20 +1956,20 @@
                 "symfony",
                 "twig"
             ],
-            "time": "2018-03-26T22:45:28+00:00"
+            "time": "2018-03-26T23:00:54+00:00"
         },
         {
             "name": "pkshetlie/settings-bundle",
-            "version": "v1.0.01",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pkshetlie/SettingsBundle.git",
-                "reference": "3e0fe4fae65740d058b3673117cc17587092cbec"
+                "reference": "517dc05fe04e69ad96d71b20589f83e950a0a36b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pkshetlie/SettingsBundle/zipball/3e0fe4fae65740d058b3673117cc17587092cbec",
-                "reference": "3e0fe4fae65740d058b3673117cc17587092cbec",
+                "url": "https://api.github.com/repos/pkshetlie/SettingsBundle/zipball/517dc05fe04e69ad96d71b20589f83e950a0a36b",
+                "reference": "517dc05fe04e69ad96d71b20589f83e950a0a36b",
                 "shasum": ""
             },
             "require": {
@@ -2009,7 +2009,7 @@
                 "symfony",
                 "twig"
             ],
-            "time": "2018-03-27T18:10:26+00:00"
+            "time": "2018-03-27T18:27:20+00:00"
         },
         {
             "name": "psr/cache",
@@ -3668,7 +3668,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "pkshetlie/pagination-bundle": 20,
+        "pkshetlie/settings-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

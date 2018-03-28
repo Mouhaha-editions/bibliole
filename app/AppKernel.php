@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new DalBundle\DalBundle(),
             new UserBundle\UserBundle(),
             new BorrowBundle\BorrowBundle(),
+            new SettingBundle\SettingBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
