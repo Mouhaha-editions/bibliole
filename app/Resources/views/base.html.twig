@@ -127,12 +127,17 @@
                                 <span>Auteurs</span>
                             </a>
                         </li>
+                        {% endif %}
+                    {% if is_granted('ROLE_EMPLOYEE') %}
+
                         <li class="{% if app.request.get('_route') starts with "admin_emprunt" %}active{% endif %}">
                             <a href="{{ url('admin_emprunt_index') }}">
                                 <i class="material-icons">pets</i>
                                 <span>Emprunt</span>
                             </a>
                         </li>
+                        {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
 
                         <li class="{% if app.request.get('_route') starts with "admin_utilisateur" %}active{% endif %}">
                             <a href="{{ url('admin_utilisateur_index') }}">

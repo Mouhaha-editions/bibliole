@@ -3,10 +3,13 @@
 namespace DalBundle\Controller;
 
 use DalBundle\Entity\Utilisateur;
+use DalBundle\Form\UtilisateurType;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Utilisateur controller.
@@ -28,7 +31,7 @@ class UtilisateurController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $qb = $em->getRepository('DalBundle:Utilisateur')->createQueryBuilder('u')
+        $qb = $em->getRepository(Utilisateur::class)->createQueryBuilder('u')
             ->leftJoin('u.classe', 'c');
         if ($request->get('search')) {
             $searchWords = explode(' ', $request->get('search'));
@@ -62,14 +65,20 @@ class UtilisateurController extends Controller
     public function newAction(Request $request)
     {
         $utilisateur = new Utilisateur();
-        $form = $this->createForm('DalBundle\Form\UtilisateurType', $utilisateur);
+        $form = $this->createForm(UtilisateurType::class, $utilisateur);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($utilisateur);
-            $em->flush();
-            return $this->redirectToRoute('admin_auteur_index');
+            try {
+                $em = $this->getDoctrine()->getManager();
+
+                $em->persist($utilisateur);
+
+                $em->flush();
+            return $this->redirectToRoute('admin_utilisateur_index');
+            }catch(Exception $e){
+             VarDumper::dump($e);
+            }
         }
 
         return $this->render('utilisateur/new.html.twig', array(

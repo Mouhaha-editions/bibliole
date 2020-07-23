@@ -44,7 +44,7 @@
 
                             <td>{{ utilisateur.nom }}</td>
                             <td>{{ utilisateur.prenom }}</td>
-                            <td>{% if utilisateur.classe is not null %}{{ utilisateur.classe }}{% endif %}</td>
+                            <td>{% if utilisateur.classe is not null %}{{ utilisateur.classe.libelle }}{% endif %}</td>
                             <td>{{ utilisateur.username }}</td>
                             <td>
                                 <a href="{{ path('admin_utilisateur_edit', { 'id': utilisateur.id }) }}"

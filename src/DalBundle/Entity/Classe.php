@@ -118,6 +118,6 @@ class Classe
      * @return string
      */
     public function __toString(){
-        return $this->$this->getLibelle();
+        return $this->getLibelle();
     }
 }
